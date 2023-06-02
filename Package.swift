@@ -29,9 +29,6 @@ let package = Package(
             dependencies: ["CSE_167"]),
         .executableTarget(
             name: "HW0",
-//            cxxSettings: [
-//                .headerSearchPath("/Users/meqt/Developer/Cpp/SearchPath/include")
-//            ],
             linkerSettings: [
                 .linkedFramework("GLUT"),
                 .linkedFramework("OpenGL"),

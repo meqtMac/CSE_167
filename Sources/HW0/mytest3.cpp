@@ -409,8 +409,12 @@ void init (void)
 
 	// Initialize the shaders
 
-	vertexshader = initshaders(GL_VERTEX_SHADER, "/Users/meqt/Documents/Cpp/CSE_167/Homework/hw0-linux_osx/shaders/light.vert.glsl") ;
-	fragmentshader = initshaders(GL_FRAGMENT_SHADER, "/Users/meqt/Documents/Cpp/CSE_167/Homework/hw0-linux_osx/shaders/light.frag.glsl") ;
+//	vertexshader = initshaders(GL_VERTEX_SHADER, "/Users/meqt/Documents/Cpp/CSE_167/Homework/hw0-linux_osx/shaders/light.vert.glsl") ;
+     vertexshader = initshaders(GL_VERTEX_SHADER, "/Users/meqt/Library/Mobile Documents/iCloud~com~apple~Playgrounds/Documents/CSE_167/Sources/HW0/shaders/light.vert.glsl");
+    
+//	fragmentshader = initshaders(GL_FRAGMENT_SHADER, "/Users/meqt/Documents/Cpp/CSE_167/Homework/hw0-linux_osx/shaders/light.frag.glsl") ;
+    fragmentshader = initshaders(GL_FRAGMENT_SHADER, "/Users/meqt/Library/Mobile Documents/iCloud~com~apple~Playgrounds/Documents/CSE_167/Sources/HW0/shaders/light.frag.glsl") ;
+    
 	GLuint program = glCreateProgram() ;
 	shaderprogram = initprogram(vertexshader, fragmentshader) ;
 	GLint linked;
@@ -439,7 +443,7 @@ void init (void)
 	glGenBuffers(3, teapotbuffers);
 
 	// Initialize texture
-	inittexture("/Users/meqt/Documents/Cpp/CSE_167/Homework/hw0-linux_osx/wood.ppm", shaderprogram) ;
+	inittexture("/Users/meqt/Library/Mobile Documents/iCloud~com~apple~Playgrounds/Documents/CSE_167/Sources/HW0/wood.ppm", shaderprogram) ;
 
 	// Initialize objects
 	initobject(FLOOR, (GLfloat *)floorverts, sizeof(floorverts), (GLfloat *)floorcol, sizeof(floorcol), (GLubyte *)floorinds, sizeof(floorinds), GL_TRIANGLES);
@@ -451,8 +455,26 @@ void init (void)
 	glDepthFunc (GL_LESS) ; // The default option
 }
 
+//#include <stdio.h>
 int main(int argc, char** argv)
 {
+//    FILE *pipe = popen("pwd", "r");
+    
+//    if (pipe == NULL) {
+//        // The dir command could not be executed
+//    } else {
+//        // The dir command was executed successfully
+//        
+//        char buffer[1024];
+//        size_t bytes_read;
+//        
+//        while ((bytes_read = fread(buffer, 1, 1024, pipe)) != 0) {
+//            std::cout << buffer;
+//        }
+//        
+//        pclose(pipe);
+//    }
+    
 	FreeImage_Initialise();
 
 	glutInit(&argc, argv);

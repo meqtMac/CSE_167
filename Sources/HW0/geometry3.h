@@ -7,7 +7,7 @@
 #include <vector>
 
 // May need to replace with absolute path on some systems
-#define PATH_TO_TEAPOT_OBJ "/Users/meqt/Documents/Cpp/CSE_167/Homework/hw0-linux_osx/teapot.obj"
+#define PATH_TO_TEAPOT_OBJ "/Users/meqt/Library/Mobile Documents/iCloud~com~apple~Playgrounds/Documents/CSE_167/Sources/HW0/teapot.obj"
 
 
 const int numobjects = 2 ; // ** NEW ** number of objects for buffer 
