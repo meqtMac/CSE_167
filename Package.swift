@@ -5,6 +5,9 @@ import PackageDescription
 
 let package = Package(
     name: "CSE_167",
+    platforms: [
+        .macOS(.v13)
+    ],
     products: [
         // Products define the executables and libraries a package produces, and make them visible to other packages.
         .library(
@@ -24,5 +27,18 @@ let package = Package(
         .testTarget(
             name: "CSE_167Tests",
             dependencies: ["CSE_167"]),
-    ]
+        .executableTarget(
+            name: "HW0",
+//            cxxSettings: [
+//                .headerSearchPath("/Users/meqt/Developer/Cpp/SearchPath/include")
+//            ],
+            linkerSettings: [
+                .linkedFramework("GLUT"),
+                .linkedFramework("OpenGL"),
+                .linkedLibrary("freeimage", .when(platforms: [.macOS])),
+                .unsafeFlags(["-L/Users/meqt/Developer/Cpp/SearchPath/lib"])
+            ]
+        )
+    ],
+    cxxLanguageStandard: .cxx11
 )
