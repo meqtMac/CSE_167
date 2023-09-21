@@ -19,7 +19,6 @@ let package = Package(
             linkerSettings: [
                 .linkedFramework("GLUT"),
                 .linkedFramework("OpenGL"),
-                .unsafeFlags(["-L/Users/meqt/Developer/Cpp/SearchPath/lib"])
             ]
         )
     ],
