@@ -5,15 +5,11 @@ import PackageDescription
 
 let package = Package(
     name: "CSE_167",
-    platforms: [
-        .macOS(.v13)
-    ],
+//    platforms: [
+//        .macOS(.v13)
+//    ],
         // Products define the executables and libraries a package produces, and make them visible to other packages.
-    dependencies: [
-        // Dependencies declare other packages that this package depends on.
-        // .package(url: /* package url */, from: "1.0.0"),
-    ],
-    targets: [
+   targets: [
         .executableTarget(
             name: "HW0",
             linkerSettings: [
