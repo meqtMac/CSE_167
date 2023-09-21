@@ -6,9 +6,8 @@
 
 #include <vector>
 
-// May need to replace with absolute path on some systems
-#define PATH_TO_TEAPOT_OBJ "/Users/meqt/Library/Mobile Documents/iCloud~com~apple~Playgrounds/Documents/CSE_167/Sources/HW0/teapot.obj"
-
+// TODO: update with relative path
+#define PATH_TO_TEAPOT_OBJ "/Users/meqt/Developer/Swift/CSE_167/Sources/HW0/teapot.obj" 
 
 const int numobjects = 2 ; // ** NEW ** number of objects for buffer 
 const int numperobj  = 3 ;

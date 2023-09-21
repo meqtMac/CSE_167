@@ -26,7 +26,6 @@
 #define GLM_FORCE_RADIANS
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
-#include <FreeImage.h>
 #include <iomanip>
 
 
@@ -273,26 +272,13 @@ void printHelp() {
 	std::cout << "\nAvailable commands:\n"
 		  << "press 'h' to print this message again.\n"
 		  << "press Esc to quit.\n"
-		  << "press 'o' to save a screenshot to \"./screenshot.png\".\n"
 		  << "press 'i' to move teapot into position for HW0 screenshot.\n"
 		  << "press 'p' to start/stop teapot animation.\n"
 		  << "press 't' to turn texturing on/off.\n"
 		  << "press 's' to turn shading on/off.\n";
 }
 
-void saveScreenshot() {
-	int pix = windowWidth * windowHeight;
-	BYTE *pixels = new BYTE[3*pix];
-	glReadBuffer(GL_FRONT);
-	glReadPixels(0,0,windowWidth,windowHeight,GL_BGR,GL_UNSIGNED_BYTE,pixels);
-	
-	FIBITMAP *img = FreeImage_ConvertFromRawBits(pixels, windowWidth, windowHeight, windowWidth * 3, 24, 0xFF0000, 0x00FF00, 0x0000FF, false);
 
-	std::cout << "Saving screenshot: screenshot.png\n";
-
-	FreeImage_Save(FIF_PNG, img, "screenshot.png", 0);
-	delete[] pixels;
-}
 
 // Defines what to do when various keys are pressed 
 void keyboard (unsigned char key, int x, int y) 
@@ -301,9 +287,9 @@ void keyboard (unsigned char key, int x, int y)
 		case 'h':
 			printHelp();
 			break;
-		case 'o':
-			saveScreenshot();
-			break;
+//		case 'o':
+//			saveScreenshot();
+//			break;
 		case 'i':
 			moveTeapot();			
 			eyeloc = 2.0f;
@@ -408,12 +394,11 @@ void init (void)
 
 
 	// Initialize the shaders
-
-//	vertexshader = initshaders(GL_VERTEX_SHADER, "/Users/meqt/Documents/Cpp/CSE_167/Homework/hw0-linux_osx/shaders/light.vert.glsl") ;
-     vertexshader = initshaders(GL_VERTEX_SHADER, "/Users/meqt/Library/Mobile Documents/iCloud~com~apple~Playgrounds/Documents/CSE_167/Sources/HW0/shaders/light.vert.glsl");
+    // TODO: update with relative file path
+     vertexshader = initshaders(GL_VERTEX_SHADER, "/Users/meqt/Developer/Swift/CSE_167/Sources/HW0/shaders/light.vert.glsl" );
     
-//	fragmentshader = initshaders(GL_FRAGMENT_SHADER, "/Users/meqt/Documents/Cpp/CSE_167/Homework/hw0-linux_osx/shaders/light.frag.glsl") ;
-    fragmentshader = initshaders(GL_FRAGMENT_SHADER, "/Users/meqt/Library/Mobile Documents/iCloud~com~apple~Playgrounds/Documents/CSE_167/Sources/HW0/shaders/light.frag.glsl") ;
+    // TODO: update with relative file path
+    fragmentshader = initshaders(GL_FRAGMENT_SHADER, "/Users/meqt/Developer/Swift/CSE_167/Sources/HW0/shaders/light.frag.glsl") ;
     
 	GLuint program = glCreateProgram() ;
 	shaderprogram = initprogram(vertexshader, fragmentshader) ;
@@ -443,7 +428,7 @@ void init (void)
 	glGenBuffers(3, teapotbuffers);
 
 	// Initialize texture
-	inittexture("/Users/meqt/Library/Mobile Documents/iCloud~com~apple~Playgrounds/Documents/CSE_167/Sources/HW0/wood.ppm", shaderprogram) ;
+	inittexture("/Users/meqt/Developer/Swift/CSE_167/Sources/HW0/wood.ppm", shaderprogram) ;
 
 	// Initialize objects
 	initobject(FLOOR, (GLfloat *)floorverts, sizeof(floorverts), (GLfloat *)floorcol, sizeof(floorcol), (GLubyte *)floorinds, sizeof(floorinds), GL_TRIANGLES);
@@ -475,8 +460,6 @@ int main(int argc, char** argv)
 //        pclose(pipe);
 //    }
     
-	FreeImage_Initialise();
-
 	glutInit(&argc, argv);
 
 	// Requests the type of buffers (Single, RGB).
@@ -510,6 +493,5 @@ int main(int argc, char** argv)
 	glutMotionFunc(mousedrag) ;
 
 	glutMainLoop(); // Start the main code
-	FreeImage_DeInitialise();
 	return 0;   /* ANSI C requires main to return int. */
 }

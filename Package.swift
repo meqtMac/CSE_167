@@ -8,12 +8,7 @@ let package = Package(
     platforms: [
         .macOS(.v13)
     ],
-    products: [
         // Products define the executables and libraries a package produces, and make them visible to other packages.
-        .library(
-            name: "CSE_167",
-            targets: ["CSE_167"]),
-    ],
     dependencies: [
         // Dependencies declare other packages that this package depends on.
         // .package(url: /* package url */, from: "1.0.0"),
@@ -24,7 +19,6 @@ let package = Package(
             linkerSettings: [
                 .linkedFramework("GLUT"),
                 .linkedFramework("OpenGL"),
-                .linkedLibrary("freeimage", .when(platforms: [.macOS])),
                 .unsafeFlags(["-L/Users/meqt/Developer/Cpp/SearchPath/lib"])
             ]
         )
